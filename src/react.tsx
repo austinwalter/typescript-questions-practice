@@ -33,6 +33,14 @@ export const List = () => {
     setList(list.concat([value]));
   };
 
+  const removeFromList = (e: any) => {
+    if (list.includes(e.target.innerText)) {
+      let index: number = list.indexOf(e.target.innerText);
+      const result: string[] = [...list.slice(0, index), ...list.slice(index + 1)];
+      setList(result);
+    }
+  };
+
   return (
     <div className="App">
       <input
@@ -48,7 +56,7 @@ export const List = () => {
       <ul data-testid="list">
         {list.length > 0 &&
           list.map((item) => {
-            return <li key={item}>{item}</li>;
+            return <li key={item} onClick={removeFromList}>{item}</li>;
           })}
       </ul>
     </div>
