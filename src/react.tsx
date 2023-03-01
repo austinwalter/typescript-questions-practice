@@ -29,9 +29,20 @@ export const List = () => {
 
   // 5. See the skipped test for a bonus problem related to debouncing
 
+  const addToList = () => {
+    setList(list.concat([value]));
+  };
+
   return (
     <div className="App">
-      <input type="text" value={value} role="input" /> <button>Add</button>
+      <input
+        type="text"
+        value={value}
+        role="input"
+        onChange={(e) => setValue(e.target.value)}
+      />
+      {" "}
+      <button onClick={addToList}>Add</button>
       <button>Sort ({currentSort})</button>
       <hr />
       <ul data-testid="list">
