@@ -31,6 +31,7 @@ export const List = () => {
 
   const addToList = () => {
     setList(list.concat([value]));
+    setValue("");
   };
 
   const removeFromList = (e: any) => {
