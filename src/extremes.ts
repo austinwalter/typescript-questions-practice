@@ -19,6 +19,10 @@ export const getExtremes = (
   // otherwise include all keys under `values`
 
   data.forEach((item) => {
+    console.log(item);
+    if (!item || typeof item !== "object") return [min, max];
+    if (!item.label || typeof item.label !== "string") return [min, max];
+
     const itemKeys: string[] = (keys === undefined) 
     ? Object.keys(item.values)
     : keys;
