@@ -28,6 +28,12 @@ const reducer = (
   switch (action.type) {
     case SET_SELECTED_VARIABLE:
       // TODO: set selectedVariableName if name found in variables list
+
+      if (!action.variableName) return state;
+      const varNames: string[] = state.variables.map(v => v.name);
+      if (varNames.includes(action.variableName)) {
+        return { ...state, selectedVariableName: action.variableName };
+      }
       return state;
     case UPSERT_VARIABLE_FORMULA:
       // TODO: update formula if variable exists,
